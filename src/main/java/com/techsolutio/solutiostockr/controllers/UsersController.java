@@ -19,7 +19,7 @@ import com.techsolutio.solutiostockr.models.Users;
 import com.techsolutio.solutiostockr.services.UsersServices;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UsersController {
     
     private UsersServices usersServices;

@@ -1,20 +1,22 @@
 package com.techsolutio.solutiostockr.exceptions;
 
-import java.net.http.HttpHeaders;
-import java.util.HashMap;
 
+import java.util.HashMap;
 import java.util.List;
+
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.FieldError;
 
 @ControllerAdvice
-public class GlobalExceptionHandler {
+public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 
     //Responsável por lidar com os erros de validação de campos, criados nos DTO's

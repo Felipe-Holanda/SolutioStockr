@@ -1,4 +1,4 @@
-package com.techsolutio.solutiostockr.models.dto;
+package com.techsolutio.solutiostockr.models.dto.ProductsDto;
 
 import com.techsolutio.solutiostockr.models.entity.Users;
 import com.techsolutio.solutiostockr.models.entity.Vendors;

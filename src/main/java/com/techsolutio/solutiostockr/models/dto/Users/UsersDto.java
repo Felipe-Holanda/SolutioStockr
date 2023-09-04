@@ -1,4 +1,4 @@
-package com.techsolutio.solutiostockr.models.dto;
+package com.techsolutio.solutiostockr.models.dto.Users;
 
 import jakarta.validation.constraints.Size;
 

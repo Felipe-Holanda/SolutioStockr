@@ -3,10 +3,10 @@ package com.techsolutio.solutiostockr.services;
 import java.util.UUID;
 import java.util.List;
 
-import com.techsolutio.solutiostockr.dto.ProductsDto;
-import com.techsolutio.solutiostockr.models.Products;
-import com.techsolutio.solutiostockr.models.Users;
-import com.techsolutio.solutiostockr.models.Vendors;
+import com.techsolutio.solutiostockr.models.dto.ProductsDto;
+import com.techsolutio.solutiostockr.models.entity.Products;
+import com.techsolutio.solutiostockr.models.entity.Users;
+import com.techsolutio.solutiostockr.models.entity.Vendors;
 
 public interface ProductsServices {
     

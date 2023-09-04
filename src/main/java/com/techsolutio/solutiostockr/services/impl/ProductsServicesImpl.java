@@ -4,15 +4,17 @@ import java.util.UUID;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 
-import com.techsolutio.solutiostockr.dto.ProductsDto;
 import com.techsolutio.solutiostockr.exceptions.AppException;
-import com.techsolutio.solutiostockr.models.Products;
-import com.techsolutio.solutiostockr.models.Users;
-import com.techsolutio.solutiostockr.models.Vendors;
+import com.techsolutio.solutiostockr.models.dto.ProductsDto;
+import com.techsolutio.solutiostockr.models.entity.Products;
+import com.techsolutio.solutiostockr.models.entity.Users;
+import com.techsolutio.solutiostockr.models.entity.Vendors;
 import com.techsolutio.solutiostockr.repositories.ProductsRepository;
 import com.techsolutio.solutiostockr.services.ProductsServices;
 
+@Service
 public class ProductsServicesImpl implements ProductsServices {
     
     private ProductsRepository productsRepository;

@@ -1,4 +1,4 @@
-package com.techsolutio.solutiostockr.models;
+package com.techsolutio.solutiostockr.models.entity;
 
 import java.util.UUID;
 
@@ -7,10 +7,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "products")
 public class Products {
     
     @Id
@@ -27,11 +29,11 @@ public class Products {
     private int amountDisposable;
 
     @ManyToOne
-    @Column(nullable = false, name = "vendor_id")
+    @JoinColumn(name = "vendor_id", nullable = false)
     private Vendors vendor;
 
-    @ManyToMany
-    @Column(nullable = false, name = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private Users user;
 
     public Products() {

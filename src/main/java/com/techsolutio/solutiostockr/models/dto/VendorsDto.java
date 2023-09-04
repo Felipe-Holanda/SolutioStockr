@@ -1,4 +1,4 @@
-package com.techsolutio.solutiostockr.dto;
+package com.techsolutio.solutiostockr.models.dto;
 
 import org.hibernate.validator.constraints.Length;
 

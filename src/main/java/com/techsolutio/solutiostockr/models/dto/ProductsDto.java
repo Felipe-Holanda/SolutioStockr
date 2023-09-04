@@ -1,7 +1,7 @@
-package com.techsolutio.solutiostockr.dto;
+package com.techsolutio.solutiostockr.models.dto;
 
-import com.techsolutio.solutiostockr.models.Users;
-import com.techsolutio.solutiostockr.models.Vendors;
+import com.techsolutio.solutiostockr.models.entity.Users;
+import com.techsolutio.solutiostockr.models.entity.Vendors;
 
 public class ProductsDto {
     

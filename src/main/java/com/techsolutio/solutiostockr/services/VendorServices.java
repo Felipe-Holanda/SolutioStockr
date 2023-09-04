@@ -3,8 +3,8 @@ package com.techsolutio.solutiostockr.services;
 import java.util.List;
 import java.util.UUID;
 
-import com.techsolutio.solutiostockr.dto.VendorsDto;
-import com.techsolutio.solutiostockr.models.Vendors;
+import com.techsolutio.solutiostockr.models.dto.VendorsDto;
+import com.techsolutio.solutiostockr.models.entity.Vendors;
 
 
 public interface VendorServices {

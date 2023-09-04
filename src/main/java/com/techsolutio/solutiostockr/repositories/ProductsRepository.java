@@ -4,7 +4,8 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.techsolutio.solutiostockr.models.Products;
+import com.techsolutio.solutiostockr.models.entity.Products;
+
 
 public interface ProductsRepository extends JpaRepository<Products, UUID>{
     

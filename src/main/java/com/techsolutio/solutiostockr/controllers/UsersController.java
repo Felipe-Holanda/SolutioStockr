@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.techsolutio.solutiostockr.dto.UsersDto;
-import com.techsolutio.solutiostockr.models.Users;
+import com.techsolutio.solutiostockr.models.dto.UsersDto;
+import com.techsolutio.solutiostockr.models.entity.Users;
 import com.techsolutio.solutiostockr.services.UsersServices;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/users")
@@ -29,7 +31,7 @@ public class UsersController {
     }
 
     @PostMapping
-    public ResponseEntity<Users> createUser(@RequestBody UsersDto userData){
+    public ResponseEntity<Users> createUser(@Valid @RequestBody UsersDto userData){
         final Users newUser = usersServices.createUser(userData);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
@@ -47,7 +49,7 @@ public class UsersController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Users> updateUser(@PathVariable String id, @RequestBody UsersDto userData){
+    public ResponseEntity<Users> updateUser(@PathVariable String id,@Valid @RequestBody UsersDto userData){
         final Users updatedUser = usersServices.updateUser(UUID.fromString(id), userData);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }

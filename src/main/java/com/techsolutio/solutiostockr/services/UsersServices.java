@@ -3,8 +3,8 @@ package com.techsolutio.solutiostockr.services;
 import java.util.List;
 import java.util.UUID;
 
-import com.techsolutio.solutiostockr.dto.UsersDto;
-import com.techsolutio.solutiostockr.models.Users;
+import com.techsolutio.solutiostockr.models.dto.UsersDto;
+import com.techsolutio.solutiostockr.models.entity.Users;
 
 public interface UsersServices {
 

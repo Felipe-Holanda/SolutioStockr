@@ -1,4 +1,4 @@
-package com.techsolutio.solutiostockr.models;
+package com.techsolutio.solutiostockr.models.entity;
 
 import java.security.Timestamp;
 import java.util.UUID;
@@ -8,9 +8,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "vendors")
 public class Vendors {
     
     @Id
@@ -23,8 +26,8 @@ public class Vendors {
     @Column(nullable = false, length = 14, unique = true)
     private String registration;
 
-    @ManyToMany
-    @Column(nullable = false, name = "registered_by")
+    @ManyToOne
+    @JoinColumn(name = "registered_by", referencedColumnName = "id", nullable = false)
     private Users registeredBy;
 
     @Column(name = "created_at", nullable = false, columnDefinition = "timestamp default now()")

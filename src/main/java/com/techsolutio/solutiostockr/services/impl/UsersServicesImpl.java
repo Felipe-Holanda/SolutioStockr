@@ -1,8 +1,8 @@
 package com.techsolutio.solutiostockr.services.impl;
 
-import com.techsolutio.solutiostockr.dto.UsersDto;
 import com.techsolutio.solutiostockr.exceptions.AppException;
-import com.techsolutio.solutiostockr.models.Users;
+import com.techsolutio.solutiostockr.models.dto.UsersDto;
+import com.techsolutio.solutiostockr.models.entity.Users;
 import com.techsolutio.solutiostockr.repositories.UserRepository;
 import com.techsolutio.solutiostockr.services.UsersServices;
 
@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UsersServicesImpl implements UsersServices{
     private UserRepository usersRepository;
 
@@ -21,9 +23,10 @@ public class UsersServicesImpl implements UsersServices{
     public Users createUser(UsersDto userData){
         final Users newUser = new Users(
             userData.getName(),
-            userData.getEmail(),
+            userData.getLogin(),
             userData.getPassword(),
-            userData.getRegistration()
+            userData.getRegistration(),
+            userData.getRole()
         );
 
         return usersRepository.save(newUser);
@@ -47,10 +50,10 @@ public class UsersServicesImpl implements UsersServices{
 
         if(foundUser == null) throw new AppException("User not found", HttpStatus.NOT_FOUND);
 
-        foundUser.setName(userData.getName());
-        foundUser.setEmail(userData.getEmail());
-        foundUser.setPassword(userData.getPassword());
-        foundUser.setRegistration(userData.getRegistration());
+        if( userData.getName() != null && !userData.getName().isEmpty() ) foundUser.setName(userData.getName());
+        if( userData.getLogin() != null && !userData.getLogin().isEmpty() ) foundUser.setLogin(userData.getLogin());
+        if( userData.getPassword() != null && !userData.getPassword().isEmpty() ) foundUser.setPassword(userData.getPassword());
+        if( userData.getRegistration() != null && !userData.getRegistration().isEmpty() ) foundUser.setRegistration(userData.getRegistration());
 
         return usersRepository.save(foundUser);
         

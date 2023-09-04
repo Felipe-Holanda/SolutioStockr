@@ -12,26 +12,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.techsolutio.solutiostockr.dto.ProductsDto;
-import com.techsolutio.solutiostockr.models.Products;
-import com.techsolutio.solutiostockr.models.Users;
-import com.techsolutio.solutiostockr.models.Vendors;
+import com.techsolutio.solutiostockr.models.dto.ProductsDto;
+import com.techsolutio.solutiostockr.models.entity.Products;
+import com.techsolutio.solutiostockr.models.entity.Users;
+import com.techsolutio.solutiostockr.models.entity.Vendors;
 import com.techsolutio.solutiostockr.repositories.UserRepository;
 import com.techsolutio.solutiostockr.services.ProductsServices;
 import com.techsolutio.solutiostockr.services.VendorServices;
 
-@RestController("/api/products")
+@RestController
+@RequestMapping("/api/products")
 public class ProductsController {
     private ProductsServices productsServices;
     private VendorServices vendorServices;
     private UserRepository userRepository;
 
-    public ProductsController(ProductsServices productsServices, VendorServices vendorServices, UserRepository userRepository) {
+    public ProductsController(ProductsServices productsServices) {
         this.productsServices = productsServices;
-        this.vendorServices = vendorServices;
-        this.userRepository = userRepository;
     }
 
     @PostMapping

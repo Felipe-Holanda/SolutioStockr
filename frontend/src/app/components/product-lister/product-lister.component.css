@@ -1,0 +1,140 @@
+@keyframes elasticLeftSlide{
+    from{
+        transform: translateX(-100%);
+    }to{
+        transform: translateX(0);
+    }
+}
+
+.lister-container{
+    margin: 3.5em;
+    background-color: #fff;
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: 0 0 .6em rgba(0,0,0,.095);
+    animation: elasticLeftSlide .5s ease;
+}
+
+.lister-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lister-header h1{
+    font-size: 18px;
+}
+
+.lister-button{
+    padding: .8em;
+    border: none;
+    outline: none;
+    border-radius: .5em;
+    background-color: #0bac06;
+    color: #fff;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    font-weight: bold;
+    box-shadow: rgba(0,0,0,.095) 0px 0px 0px;
+
+}
+
+.lister-button:hover{
+    background-color: #0a8c05;
+    box-shadow: rgba(0,0,0,.095) 5px 5px .8px;
+
+}
+
+ul{
+    border: 1px solid #555555;
+    border-radius: 0 0 .5em .5em;
+    padding: .5em;
+    list-style: none;
+}
+
+
+/* Card configuration */
+.product-element{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5em;
+    border-bottom: 1px solid #ebebeb49;
+}
+
+.product-element:hover{
+    background-color: #f5f5f5;
+}
+
+.product-listed{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.products-details{
+    display: flex;
+    flex-direction: column;
+}
+
+.products-details div{
+    display: flex;
+    flex-direction: row;
+}
+
+li h4{
+    font-size: 14px;
+    line-height: 12px;
+}
+
+section{
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+}
+
+p{
+    margin: 0;
+    margin-right: 1em;
+}
+/* Botões de ação */
+
+.product-button{
+    padding: .5em;
+    border: none;
+    outline: none;
+    border-radius: .5em;
+    color: #fff;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    font-weight: bold;
+    box-shadow: rgba(0,0,0,.095) 0px 0px 0px;
+    margin: .5em; 
+}
+
+.see{
+    background-color: #0c7ec9;
+}
+
+.see:hover{
+    background-color: #0c5ac9;
+}
+
+
+.edit{
+    background-color: #c9940c;
+}
+
+.edit:hover{
+    background-color: #c96a0c;
+}
+
+.delete{
+    background-color: #c90c0c;
+}
+
+.delete:hover{
+    background-color: #9e0606;
+}

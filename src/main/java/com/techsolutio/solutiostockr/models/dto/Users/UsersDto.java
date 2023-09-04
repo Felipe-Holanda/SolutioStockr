@@ -21,8 +21,8 @@ public class UsersDto {
     private String password;
 
     @NotBlank(message = "Registration cannot be blank")
-    @Size(min = 11, max = 11, message = "Registration must be 11 characters length")
-    @Pattern(regexp = "^[0-9]*$", message = "Registration must contain only numbers")
+    @Size(min = 14, max = 14, message = "Registration must be 11 characters length")
+    @Pattern(regexp = "\"[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}\"", message = "Registration must be on 000.000.000-00 format.")
     private String registration;
 
     @NotBlank(message = "Role cannot be blank")

@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.techsolutio.solutiostockr.exceptions.AppException;
 import com.techsolutio.solutiostockr.infra.security.TokenService;
-import com.techsolutio.solutiostockr.models.dto.AuthenticationDto;
-import com.techsolutio.solutiostockr.models.dto.UsersDto;
+import com.techsolutio.solutiostockr.models.dto.Auth.AuthenticationDto;
+import com.techsolutio.solutiostockr.models.dto.Users.UsersDto;
 import com.techsolutio.solutiostockr.models.entity.Users;
 import com.techsolutio.solutiostockr.repositories.UserRepository;
 

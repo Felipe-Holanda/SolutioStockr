@@ -19,7 +19,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -53,12 +52,6 @@ public class Users implements UserDetails{
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false, columnDefinition = "timestamp default now()")
     private Timestamp updated_at = new Timestamp(System.currentTimeMillis());
-
-    @OneToMany(mappedBy = "registeredBy")
-    private List<Vendors> registeredVendors;
-
-    @OneToMany(mappedBy = "user")
-    private List<Products> products;
 
     public Users(){}
 

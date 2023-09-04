@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -22,7 +20,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
     
     // Responsável por lidar com os erros de rota da aplicação
     @ExceptionHandler({AppException.class})
-    @Order(Ordered.HIGHEST_PRECEDENCE)
     public ResponseEntity<Object> handleAppException(AppException ex) {
         HashMap<String, String> returnObject = new HashMap<>();
         returnObject.put("message", ex.getMessage());
@@ -44,7 +41,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 	}
 
     // Responsável por lidar com os erros internos da aplicação
-    @Order(Ordered.LOWEST_PRECEDENCE)
     @ExceptionHandler({Exception.class})
     public ResponseEntity<Object> handleInternal(Exception ex) {
         HashMap<String, String> returnObject = new HashMap<>();

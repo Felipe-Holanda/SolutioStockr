@@ -9,4 +9,5 @@ import com.techsolutio.solutiostockr.models.entity.Products;
 
 public interface ProductsRepository extends JpaRepository<Products, UUID>{
     
+
 }

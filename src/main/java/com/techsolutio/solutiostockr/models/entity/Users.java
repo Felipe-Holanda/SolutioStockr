@@ -1,6 +1,7 @@
 package com.techsolutio.solutiostockr.models.entity;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
 import java.util.List;
@@ -39,7 +40,7 @@ public class Users implements UserDetails{
     @JsonIgnore
     private String password;
 
-    @Column(length = 11, nullable = false, unique = true)
+    @Column(length = 14, nullable = false, unique = true)
     private String registration;
 
     @JsonIgnore
@@ -64,9 +65,16 @@ public class Users implements UserDetails{
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.role == UsersRoles.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
-        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    List<GrantedAuthority> authorities = new ArrayList<>();
+    
+    authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+
+    if (this.role == UsersRoles.ADMIN) {
+        authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
     }
+
+    return authorities;
+}
 
     public UUID getId() {
         return id;

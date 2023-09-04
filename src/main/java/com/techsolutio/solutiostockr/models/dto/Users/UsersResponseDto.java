@@ -1,8 +1,7 @@
 package com.techsolutio.solutiostockr.models.dto.Users;
 
 import java.util.UUID;
-
-import com.google.protobuf.Timestamp;
+import java.sql.Timestamp;
 
 public class UsersResponseDto {
     private UUID id;
@@ -13,7 +12,6 @@ public class UsersResponseDto {
 
     private String registration;
 
-    private String role;
 
     private Timestamp createdAt;
 
@@ -22,12 +20,11 @@ public class UsersResponseDto {
     public UsersResponseDto() {
     }
 
-    public UsersResponseDto(UUID id, String name, String login, String registration, String role, Timestamp createdAt, Timestamp updatedAt) {
+    public UsersResponseDto(UUID id, String name, String login, String registration, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.name = name;
         this.login = login;
         this.registration = registration;
-        this.role = role;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -62,14 +59,6 @@ public class UsersResponseDto {
 
     public void setRegistration(String registration) {
         this.registration = registration;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public Timestamp getCreatedAt() {

@@ -16,13 +16,13 @@ public class UsersDto {
     private String login;
 
     @NotBlank(message = "Password cannot be blank")
-    @Size(min = 8, max = 64, message = "Password must be between 8 and 64 characters length")
+    @Size(min = 8, max = 92, message = "Password must be between 8 and 92 characters length")
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", message = "Password must contain at least one uppercase letter, one lowercase letter and one number")
     private String password;
 
     @NotBlank(message = "Registration cannot be blank")
-    @Size(min = 14, max = 14, message = "Registration must be 11 characters length")
-    @Pattern(regexp = "\"[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}\"", message = "Registration must be on 000.000.000-00 format.")
+    @Size(min = 14, max = 15, message = "Registration must be 14 characters length, including dots and hyphen")
+    @Pattern(regexp = "[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}", message = "Registration must be on 000.000.000-00 format.")
     private String registration;
 
     @NotBlank(message = "Role cannot be blank")

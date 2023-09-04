@@ -7,8 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,23 +26,21 @@ public class Products {
     @Column(columnDefinition = "integer default 0", name = "amount_disposable")
     private int amountDisposable;
 
-    @ManyToOne
-    @JoinColumn(name = "vendor_id", nullable = false)
-    private Vendors vendor;
+    @Column(nullable = false, name = "vendor_name")
+    private String vendorName;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Users user;
+    @Column(nullable = false, name = "vendor_registration")
+    private String vendorRegistration;
 
     public Products() {
     }
 
-    public Products(String productName, float price, int amountDisposable, Vendors vendor, Users user) {
+    public Products(String productName, float price, int amountDisposable, String vendorName, String vendorRegistration) {
         this.productName = productName;
         this.price = price;
         this.amountDisposable = amountDisposable;
-        this.vendor = vendor;
-        this.user = user;
+        this.vendorName = vendorName;
+        this.vendorRegistration = vendorRegistration;
     }
 
     public UUID getId() {
@@ -75,20 +71,20 @@ public class Products {
         this.amountDisposable = amountDisposable;
     }
 
-    public Vendors getVendor() {
-        return vendor;
+    public String getVendorName() {
+        return vendorName;
     }
 
-    public void setVendor(Vendors vendor) {
-        this.vendor = vendor;
+    public void setVendorName(String vendorName) {
+        this.vendorName = vendorName;
     }
 
-    public Users getUser() {
-        return user;
+    public String getVendorRegistration() {
+        return vendorRegistration;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setVendorRegistration(String vendorRegistration) {
+        this.vendorRegistration = vendorRegistration;
     }
 
 }

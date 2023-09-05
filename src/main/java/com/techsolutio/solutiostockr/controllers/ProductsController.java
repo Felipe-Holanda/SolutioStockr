@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -23,21 +24,22 @@ import com.techsolutio.solutiostockr.services.ProductsServices;
 
 import jakarta.validation.Valid;
 
-//
-
 
 @RestController
 @RequestMapping("/api/products")
+@CrossOrigin(origins = "*")
 public class ProductsController {
    
     @Autowired
     private ProductsServices productsServices;
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<List<Products>> listAllProducts(){
         return new ResponseEntity<>(productsServices.listAllProducts(), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public ResponseEntity<Products> retrieveProducts(@PathVariable String id){
         try {
@@ -48,11 +50,13 @@ public class ProductsController {
         } catch (Exception e) { throw new AppException("Product not found", HttpStatus.NOT_FOUND);}
     }
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<Products> createProduct(@RequestBody @Valid ProductsDto productData){
         return new ResponseEntity<>(productsServices.createProduct(productData), HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @PatchMapping("/{id}")
     public ResponseEntity<Products> updateProduct(@PathVariable String id, @RequestBody ProductsDto productData){
         try {
@@ -62,6 +66,7 @@ public class ProductsController {
         } catch (Exception e) { throw new AppException("Product not found", HttpStatus.NOT_FOUND);}
     }
 
+    @CrossOrigin
     @PutMapping("/{id}")
     public ResponseEntity<Products> increaseStock(@PathVariable String id, @RequestBody ProductsDto productData){
         try {
@@ -72,6 +77,7 @@ public class ProductsController {
         } catch (Exception e) { throw new AppException("Product not found", HttpStatus.NOT_FOUND);}
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public ResponseEntity<Products> deleteProduct(@PathVariable String id){
         try {

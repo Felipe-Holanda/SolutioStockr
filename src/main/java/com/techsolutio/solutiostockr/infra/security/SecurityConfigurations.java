@@ -14,11 +14,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfigurations {
+public class SecurityConfigurations extends WebMvcConfigurationSupport{
 
     @Autowired
     private SecurityFilter securityFilter;
@@ -33,12 +36,13 @@ public class SecurityConfigurations {
     @Bean
     public SecurityFilterChain secutiryFilterChain(HttpSecurity httpSecurity) throws Exception{
         return httpSecurity
-        .csrf(csrf -> csrf.disable())
+        .csrf(cfsr -> cfsr.disable())
+        .cors(cors -> cors.disable())
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(authorize -> authorize
+        .requestMatchers(HttpMethod.OPTIONS, "/api/**").permitAll()
         .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
             .requestMatchers(HttpMethod.PUT, "/api/users/**").hasRole("ADMIN")
-            //Agora, todas as requisições de "/api/vendors" precisam ser admin
             .requestMatchers(HttpMethod.POST, "/api/vendors/**").hasRole("ADMIN")
             .requestMatchers(HttpMethod.GET, "/api/vendors/**").hasAnyRole("ADMIN", "USER")
             .requestMatchers(HttpMethod.PATCH, "/api/vendors/**").hasRole("ADMIN")
@@ -49,6 +53,12 @@ public class SecurityConfigurations {
         .build();
     }
 
+    @Override
+    protected void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**").allowedOrigins("*").allowCredentials(false).allowedMethods("GET","POST","PUT","DELETE");
+        super.addCorsMappings(registry);
+    }
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
         return authenticationConfiguration.getAuthenticationManager();
@@ -57,6 +67,19 @@ public class SecurityConfigurations {
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("*")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowedHeaders("Authorization", "Content-Type");
+            }
+        };
     }
 
 }

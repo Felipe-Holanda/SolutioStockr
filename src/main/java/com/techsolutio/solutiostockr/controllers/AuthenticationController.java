@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +30,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "*")
 public class AuthenticationController {
 
     @Autowired
@@ -40,6 +42,7 @@ public class AuthenticationController {
     @Autowired
     private TokenService tokenService;
 
+    @CrossOrigin
     @PostMapping("/login")
     public ResponseEntity<HashMap<String, String>> login(@RequestBody @Valid AuthenticationDto authData){
         var usernamePassword = new UsernamePasswordAuthenticationToken(authData.getLogin(), authData.getPassword());
@@ -54,6 +57,7 @@ public class AuthenticationController {
         
     }
 
+    @CrossOrigin
     @PostMapping("/register")
     public ResponseEntity<UsersResponseDto> register(@RequestBody @Valid UsersDto authData) throws AppException{
         if(userRepository.findByLogin(authData.getLogin()) != null) throw new AppException("Login already exists", HttpStatus.CONFLICT);
@@ -81,6 +85,7 @@ public class AuthenticationController {
         return new ResponseEntity<>(userResponse, HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @GetMapping("/profile")
     public ResponseEntity<UserDetails> profile(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

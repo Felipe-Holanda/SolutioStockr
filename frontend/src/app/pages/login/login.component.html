@@ -1,0 +1,42 @@
+<div class="container">
+  <form (ngSubmit)="loginUser()">
+
+    <h1>Autentique-se</h1>
+
+    <mat-form-field class="form-inputs">
+      <mat-label>Nome de usuário</mat-label>
+      <input matInput
+      matNativeControl="text"
+      [(ngModel)]="formData.login"
+      name="login"
+      type="text"
+      minlength="3"
+      maxlength="64"
+      required
+      pattern="^[a-zA-Z0-9_]*$"
+      placeholder="Ex. johndoe">
+      <mat-error *ngIf="formData.login">Insira um nome de usuário válido</mat-error>
+    </mat-form-field>
+
+
+
+    <mat-form-field>
+      <mat-label>Insira sua senha</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'"
+      [(ngModel)]="formData.password"
+        name="password"
+        type="password"
+        maxlength="20"
+        required
+      >
+      <button class="btn-eye" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Esconder senha'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div class="btn-options">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!isValid()">Autenticar</button>
+    </div>
+    <p class="captive-text">Não possui uma conta? <a [routerLink]="['/register']">Cadastre-se</a>!</p>
+  </form>
+</div>

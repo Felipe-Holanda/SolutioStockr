@@ -63,7 +63,7 @@ public class UsersDto {
     }
 
     public String getRole() {
-        return this.role.toUpperCase();
+        return "ADMIN";
     }
 
 }

@@ -1,0 +1,60 @@
+form{
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  max-width: 450px;
+  padding: 1em;
+  border-radius: .5em;
+  background-color: #fff;
+  margin: 0 auto;
+  margin-top: 5em;
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  text-align: center;
+  animation: slideDown .5s ease-in-out;
+}
+
+@keyframes slideDown {
+  from{
+    transform: translateY(-150%);
+  }to{
+    transform: translateY(0);
+  }
+}
+
+
+.btn-eye{
+  border: none;
+  background-color: transparent;
+  margin-right: .5em;
+  cursor: pointer;
+}
+
+.btn-options{
+  margin-top: 2em;
+}
+
+.btn-options button{
+  padding: 1em;
+  width: 100%;
+  background-color: #39b2f7;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  transition: all .3s ease;
+}
+
+.btn-options button:hover{
+  background-color: #1c8adb;
+  cursor: pointer;
+}
+
+.btn-options button:disabled{
+  background-color: #b3d7f9;
+  cursor: not-allowed;
+}
+
+p a{
+  color: #39b2f7;
+  text-decoration: none;
+  transition: all .3s ease;
+}

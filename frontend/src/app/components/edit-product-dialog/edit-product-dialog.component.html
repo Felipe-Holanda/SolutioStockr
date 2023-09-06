@@ -1,0 +1,23 @@
+<mat-dialog-content class="modal">
+  <h1>Editar produto</h1>
+  <mat-form-field>
+    <input matInput [(ngModel)]="product.productName" placeholder="Nome">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="product.price" placeholder="Preço">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="product.amountDisposable" placeholder="Quantidade">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="product.vendorName" placeholder="Descrição">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="product.vendorRegistration" placeholder="Imagem">
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-button color="primary" (click)="save()">Editar</button>
+</mat-dialog-actions>

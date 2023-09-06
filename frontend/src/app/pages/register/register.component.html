@@ -1,0 +1,73 @@
+<div class="container">
+  <form (ngSubmit)="registerUser()">
+
+    <h1>Cadastre-se</h1>
+
+    <mat-form-field class="form-inputs">
+      <mat-label>Nome</mat-label>
+      <input matInput
+        matNativeControl="text"
+        [(ngModel)]="formData.name"
+        name="name"
+        type="text"
+        minlength="3"
+        maxlength="64"
+        required
+        placeholder="Ex. John Doe">
+        <mat-error *ngIf="formData.name">Campo obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-inputs">
+      <mat-label>Nome de usuário</mat-label>
+      <input matInput
+      matNativeControl="text"
+      [(ngModel)]="formData.login"
+      name="login"
+      type="text"
+      minlength="3"
+      maxlength="64"
+      required
+      pattern="^[a-zA-Z0-9_]*$"
+      placeholder="Ex. johndoe">
+      <mat-error *ngIf="formData.login">Insira um nome de usuário válido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-inputs">
+      <mat-label>CPF</mat-label>
+      <input matInput
+      matNativeControl="text"
+      [(ngModel)]="formData.registration"
+      name="registration"
+      required
+      mask="000.000.000-00"
+      placeholder="Ex. 000.000.000-00">
+      <mat-error *ngIf="formData.registration">Insira um CPF válido</mat-error>
+    </mat-form-field>
+
+
+
+    <mat-form-field>
+      <mat-label>Crie uma senha</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'"
+      [(ngModel)]="formData.password"
+        name="password"
+        type="password"
+        minlength="8"
+        maxlength="20"
+        required
+        pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+      >
+      <button class="btn-eye" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Esconder senha'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="formData.password">
+        Sua senha deve conter entre 8 e 20 caracteres, com pelomenos um número, uma letra e um caractere especial
+      </mat-error>
+    </mat-form-field>
+
+    <div class="btn-options">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!isValid()">Cadastrar</button>
+    </div>
+    <p class="captive-text">Já possui uma conta? <a [routerLink]="['/']">Autentique-se</a>!</p>
+  </form>
+</div>

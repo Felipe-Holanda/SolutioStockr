@@ -33,7 +33,7 @@ O SolutioStockr é um sistema de gerenciamento de estoque, onde é possível cad
   
 
 ## 📝 Acesse o Deploy
-- Frontend: [Acessar aplicação completa!](https://tourmaline-elf-6727e1.netlify.app/)
+- Frontend: [Acessar aplicação completa!](https://preeminent-conkies-c7931b.netlify.app/)
 - Backend: [https://deploy-production-3124.up.railway.app](https://deploy-production-3124.up.railway.app)
  
 

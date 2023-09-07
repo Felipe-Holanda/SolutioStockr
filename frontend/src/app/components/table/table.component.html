@@ -1,0 +1,53 @@
+<mat-table [dataSource]="this.productsService.products$">
+  <!-- Coluna Nome do Produto -->
+  <ng-container matColumnDef="productName">
+    <mat-header-cell *matHeaderCellDef> Produto </mat-header-cell>
+    <mat-cell *matCellDef="let product"> {{ product.productName }} </mat-cell>
+  </ng-container>
+
+  <!-- Coluna Preço -->
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef> Preço </mat-header-cell>
+    <mat-cell *matCellDef="let product"> {{ product.price | currency }} </mat-cell>
+  </ng-container>
+
+  <!-- Coluna Quantidade Disponível -->
+  <ng-container matColumnDef="amountDisposable">
+    <mat-header-cell *matHeaderCellDef> Estoque </mat-header-cell>
+    <mat-cell *matCellDef="let product"> {{ product.amountDisposable }} </mat-cell>
+  </ng-container>
+
+  <!-- Coluna Nome do Fornecedor -->
+  <ng-container matColumnDef="vendorName">
+    <mat-header-cell *matHeaderCellDef> Fornecedor </mat-header-cell>
+    <mat-cell *matCellDef="let product"> {{ product.vendorName }} </mat-cell>
+  </ng-container>
+
+  <div id="hide">
+    <ng-container matColumnDef="vendorRegistration">
+      <mat-header-cell *matHeaderCellDef> CNPJ </mat-header-cell>
+      <mat-cell *matCellDef="let product"> {{ product.vendorRegistration }} </mat-cell>
+    </ng-container>
+  </div>
+
+  <!-- Coluna de ações com o botão -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+    <mat-cell *matCellDef="let product">
+      <button mat-icon-button color="primary" (click)="editProduct(product)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="accent" (click)="addToStock(product)">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteProduct(product)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<p *ngIf="!(productsService.products$ | async)?.length">Nenhum produto cadastrado.</p>
+

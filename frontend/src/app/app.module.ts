@@ -21,7 +21,9 @@ import { EditProductModalComponent } from './components/edit-product-dialog/edit
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { StoreModule } from '@ngrx/store';
-import { productReducer } from './states/product/product.state';
+import { AddStockDialogComponent } from './components/add-stock-dialog/add-stock-dialog.component';
+import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
+import { AddProductDialogComponent } from './components/add-product-dialog/add-product-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,10 @@ import { productReducer } from './states/product/product.state';
     RegisterComponent,
     DashboardComponent,
     TableComponent,
-    EditProductModalComponent
+    EditProductModalComponent,
+    AddStockDialogComponent,
+    DeleteDialogComponent,
+    AddProductDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,6 @@ import { productReducer } from './states/product/product.state';
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
-    StoreModule.forFeature('products', productReducer),
     StoreModule.forRoot(),
     NgxMaskModule.forRoot(),
     ToastrModule.forRoot()

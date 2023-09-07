@@ -1,7 +1,7 @@
 <mat-dialog-content class="modal">
   <div class="centered-dialog">
 
-    <h1>Editar produto</h1>
+    <h1>Cadastrar produto</h1>
     <mat-form-field>
       <input matInput [(ngModel)]="product.productName" placeholder="Nome do produto">
     </mat-form-field>
@@ -21,7 +21,7 @@
     </mat-form-field>
   </div>
 </mat-dialog-content>
-<mat-dialog-actions style="margin: 0 auto;">
+<mat-dialog-actions>
   <button mat-button (click)="cancel()">Cancelar</button>
-  <button mat-button color="primary" (click)="save()">Editar</button>
+  <button mat-button color="primary" (click)="save()">Cadastar</button>
 </mat-dialog-actions>

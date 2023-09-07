@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
 import { catchError, map } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import iUser from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -33,10 +34,13 @@ export class AuthGuard implements CanActivate {
 
       this.httpClient.get('http://localhost:8080/api/auth/profile', { headers: { 'Authorization': `Bearer ${token}` }})
         .subscribe((response)=>{
+          const user = response as iUser;
+          this.toastrService.success(`Bem vindo de volta, ${user.name}!`);
           this.authService.setToken(token);
-          return true;
+          return this.router.createUrlTree(['/dashboard']);
         }, (error)=>{
           this.toastrService.error('Você não está autenticado.', 'Erro de autenticação');
+          sessionStorage.clear();
           return this.router.createUrlTree(['/']);
         })
 

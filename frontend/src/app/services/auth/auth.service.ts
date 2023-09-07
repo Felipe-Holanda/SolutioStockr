@@ -35,18 +35,20 @@ export class AuthService {
     this.httpClient.post(this.apiUrl + '/login', { login, password })
       .subscribe((response: any) => {
         sessionStorage.setItem('token', response.token);
-        this.setToken(response.token);
         this.router.navigate(['/dashboard']);
       }, (error)=>{
         this.toastrService.error('Usuário ou senha incorretos!');
       });
   }
 
-  registerUser(name: string, username: string, registration:string, password: string) {
-    this.httpClient.post(this.apiUrl + '/register', { name, username, registration, password })
+  registerUser(name: string, login: string, registration:string, password: string) {
+    this.httpClient.post(this.apiUrl + '/register', { name, login, registration, password })
       .subscribe((response: any) => {
         this.toastrService.success('Usuário cadastrado com sucesso!');
         this.router.navigate(['/']);
+      },
+      (error) => {
+        this.toastrService.error(`${error.error.message}`, 'Erro ao cadastrar usuário!')
       });
   }
 
@@ -62,7 +64,7 @@ export class AuthService {
 
     const actualPage = this.router.url;
 
-    this.httpClient.get(this.apiUrl + '/profile', { headers: { 'Authorization': `Bearer ${this.token}` }})
+    this.httpClient.get(this.apiUrl + '/profile', { headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` }})
       .subscribe((response) => {
         if(actualPage === '/' || actualPage === '/register'){
           this.router.navigate(['/dashboard']);
@@ -76,7 +78,7 @@ export class AuthService {
   }
 
   logoutUser(){
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
     this.token = '';
     this.router.navigate(['/']);
     this.toastrService.info('Tchau! Volte logo!')

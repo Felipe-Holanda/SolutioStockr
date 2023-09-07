@@ -1,0 +1,11 @@
+<mat-dialog-content class="modal">
+  <h1 style="margin: 0 auto;">Acrescentar estoque</h1>
+
+  <mat-form-field style="margin: 0 auto;">
+    <input matInput [(ngModel)]="product.amountDisposable" placeholder="Quantidade a adicionar" value="">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions style="margin: 0 auto;">
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-button color="primary" (click)="save()">Adicionar estoque</button>
+</mat-dialog-actions>
